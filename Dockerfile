@@ -7,8 +7,8 @@ WORKDIR /app
 COPY common.env backend.env ./
 
 # Expose the necessary ports
-EXPOSE 10000
+EXPOSE 8000
 
 
 # Start Saleor API server
-CMD ["gunicorn", "saleor.wsgi", "--bind", "0.0.0.0:10000", "--workers", "4"]
+CMD ["gunicorn", "saleor.wsgi", "--bind", "0.0.0.0:8000", "--workers", "1"]
