@@ -8,7 +8,6 @@ WORKDIR /app
 COPY common.env backend.env ./
 RUN pip install --no-cache-dir gunicorn
 # Expose the application port (Saleor API runs on 8000)
-EXPOSE ${PORT}
-
+EXPOSE 10000
 # Run Saleor API
-CMD ["gunicorn", "--bind", "0.0.0.0:${PORT}", "--workers", "4", "--threads", "4", "--timeout", "120", "saleor.wsgi:application"]
+CMD bash -c "gunicorn --bind 0.0.0.0:${PORT:-10000} --workers 4 --threads 4 --timeout 120 saleor.wsgi:application"
