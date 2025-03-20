@@ -11,4 +11,4 @@ COPY common.env backend.env ./
 EXPOSE 8000
 
 # Run Saleor API
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers=4", "saleor.wsgi:application"]
+CMD ["gunicorn", "--bind=0.0.0.0:8000", "--workers=4", "--threads=4", "--timeout=120", "saleor.wsgi:application"]
